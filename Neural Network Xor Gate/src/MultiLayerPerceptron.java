@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Implements backpropagation as described in:
- * http://www4.rgu.ac.uk/files/chapter3%20-%20bp.pdf
- * @author Andreas Thiele
+ * Implements backpropagation, saves edge in files.
+ * @Author : Deepak Ahire
+ * B.Tech CSE
+ * Walchand College Of Engineering, Sangli.
  */
+ 
 public class MultiLayerPerceptron implements Serializable{
     /**
      * Example of the network solving the XOR-problem
