@@ -41,8 +41,9 @@ public class MultiLayerPerceptron implements Serializable{
             fileOperation.writeToFile((Object)lastHiddenLayer, "./LastHiddenLayer.obj");
 
             //Hidden Layers : Saving an Arraylist of ArrayList of Nuerons :
-            ArrayList <ArrayList<Neuron>> hiddenLayers = null;
-            for(int i=1;i<mlp.hidden.size()-1;i++){
+            ArrayList <ArrayList<Neuron>> hiddenLayers = new ArrayList<ArrayList<Neuron>>();
+            System.out.println("Number of hidden Layers:" + mlp.hidden.size());
+            for(int i=0;i<mlp.hidden.size();i++){
                 hiddenLayers.add(mlp.hidden.get(i));
             }
             fileOperation = new FileOperation();
@@ -153,11 +154,11 @@ public class MultiLayerPerceptron implements Serializable{
             fileOperation = new FileOperation();
             ArrayList<ArrayList<Neuron>> hiddenLayer = (ArrayList<ArrayList<Neuron>>) fileOperation.readFromFile("./HiddenLayer.obj");
 
-            for (int i = 1; i < this.hidden.size() ; i++) {
-                for (int j = 0; j < this.hidden.get(i - 1).size(); j++) {
-                    for (int k = 0; k < this.hidden.get(i).size(); k++) {
-                        Neuron h = this.hidden.get(i - 1).get(j);
-                        Neuron hto = this.hidden.get(i).get(j);
+            for (int i = 0; i < this.hidden.size() - 1 ; i++) {
+                for (int j = 0; j < this.hidden.get(i).size(); j++) {
+                    for (int k = 0; k < this.hidden.get(i+1).size(); k++) {
+                        Neuron h = this.hidden.get(i).get(j);
+                        Neuron hto = this.hidden.get(i+1).get(k);
                         h.forbind(hto, hiddenLayer.get(i).get(j).forbundetTil.get(k).getWeight());
                     }
                 }
